@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/card-store";
+import { ChevronDown, ShoppingCart } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);

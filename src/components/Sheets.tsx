@@ -30,7 +30,7 @@ const Sheets = () => {
               <Input></Input>
               <Label>Password</Label>
               <Input></Input>
-              <SheetTitle className="hover:underline cursor-pointer">Don't have an account? Sign Up</SheetTitle>
+              <SheetTitle className="hover:underline cursor-pointer">Don&apos;t have an account? Sign Up</SheetTitle>
             </SheetDescription>
           </SheetHeader>
           <div className=" flex flex-col gap-8">

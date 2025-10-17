@@ -86,7 +86,7 @@ const FAQPage = () => {
         Frequently Asked Questions
       </h1>
       <p className="text-center text-gray-700 mb-12 max-w-2xl mx-auto">
-        Here are some of the most common questions we get from our customers. If you can't find your answer, feel free to contact us.
+        Here are some of the most common questions we get from our customers. If you can&apos;t find your answer, feel free to contact us.
       </p>
       <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg divide-y divide-gray-200">
         {faqData.map((item, index) => (
