@@ -1,36 +1,216 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🛒 FitStyle - E-commerce Fullstack
+Um e-commerce completo e moderno construído com Next.js 15, integrando pagamentos via Stripe, autenticação com Supabase e gerenciamento de estado eficiente com Zustand. Desenvolvido com foco em UI profissional e mobile-first.
+🚀 Ver Demonstração ao Vivo
+📋 Sobre o Projeto
+FitStyle é um e-commerce fullstack que demonstra a implementação de funcionalidades essenciais para uma aplicação de vendas online real, incluindo catálogo de produtos filtrado por categorias, carrinho de compras, processamento de pagamentos seguro e um sistema completo de autenticação com gerenciamento de pedidos.
+Este projeto foi desenvolvido do zero, evoluindo de um projeto base com melhorias significativas em funcionalidade, design e experiência do usuário.
+✨ Funcionalidades
+Catálogo e Navegação
 
-## Getting Started
+🛍️ Catálogo de Produtos: Listagem completa com detalhes e imagens
+🏷️ Filtro por Categorias: 5+ páginas dedicadas com categorias customizadas do Stripe
+🎯 Busca e Navegação: Interface intuitiva para descoberta de produtos
+📱 Mobile-First: Design totalmente responsivo e otimizado para dispositivos móveis
 
-First, run the development server:
+Carrinho e Checkout
 
-```bash
-npm run dev
-# or
+🛒 Carrinho de Compras: Adicionar, remover e atualizar quantidades em tempo real
+💳 Pagamento Integrado: Processamento seguro via Stripe
+✅ Validações Robustas: Formulários e checkout com validação completa
+💰 Cálculo Automático: Subtotal, impostos e total dinâmicos
+
+Autenticação e Conta do Usuário
+
+👤 Sistema de Login: Autenticação segura com Supabase
+📋 Perfil do Usuário: Visualização e edição de informações cadastrais
+🛍️ Histórico de Compras: Detalhes completos de pedidos anteriores
+🔒 Gerenciamento de Senha: Alteração e recuperação de senha segura
+📧 Verificação de Email: Confirmação de conta via email
+
+Design e UX
+
+⚡ Performance Otimizada: Server Components e Client Components estrategicamente utilizados
+🎨 UI Profissional: Design moderno e consistente
+🌐 Interações Aprimoradas: Componentes customizados com transições suaves
+♿ Acessibilidade: Componentes seguindo padrões WCAG
+
+🛠️ Tecnologias Utilizadas
+Core
+
+Next.js 15 - Framework React com App Router
+React 18 - Biblioteca para construção de interfaces
+TypeScript - Tipagem estática para maior segurança
+
+Estilização
+
+TailwindCSS - Framework CSS utilitário
+shadcn/ui - Componentes UI reutilizáveis e acessíveis
+
+Estado e Dados
+
+Zustand - Gerenciamento de estado simplificado
+Stripe - Processamento de pagamentos
+Supabase - Autenticação, banco de dados e gerenciamento de usuários
+
+Deploy
+
+Vercel - Hospedagem e CI/CD automático
+
+📦 Instalação e Uso
+Pré-requisitos
+
+Node.js 18+
+npm ou yarn
+Conta no Stripe (para chaves de API)
+Conta no Supabase (para autenticação e banco de dados)
+
+Passo a Passo
+
+Clone o repositório
+
+bashgit clone https://github.com/seu-usuario/fitstyle-ecommerce.git
+cd fitstyle-ecommerce
+
+Instale as dependências
+
+bashnpm install
+# ou
+yarn install
+
+Configure as variáveis de ambiente
+
+Crie um arquivo .env.local na raiz do projeto:
+env# Stripe
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=sua_chave_publica_stripe
+STRIPE_SECRET_KEY=sua_chave_secreta_stripe
+
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=sua_url_supabase
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anonima_supabase
+SUPABASE_SERVICE_ROLE_KEY=sua_chave_service_role_supabase
+
+Execute o projeto em desenvolvimento
+
+bashnpm run dev
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse no navegador
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
+🏗️ Estrutura do Projeto
+├── app/
+│   ├── (routes)/              # Páginas da aplicação
+│   │   ├── page.tsx           # Home
+│   │   ├── products/          # Páginas de categorias
+│   │   ├── login/             # Login e autenticação
+│   │   ├── checkout/          # Checkout
+│   │   └── account/           # Perfil e histórico
+│   ├── api/                   # API Routes (Stripe, Supabase)
+│   └── layout.tsx             # Layout principal
+├── components/
+│   ├── ui/                    # Componentes shadcn/ui
+│   ├── navbar/                # Navegação
+│   ├── cart/                  # Componentes do carrinho
+│   ├── auth/                  # Componentes de autenticação
+│   └── ...                    # Componentes customizados
+├── lib/
+│   ├── store.ts               # Store Zustand
+│   ├── supabase.ts            # Cliente Supabase
+│   └── stripe.ts              # Utilitários Stripe
+├── public/                    # Arquivos estáticos e imagens
+└── styles/                    # Estilos globais
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+💡 Destaques Técnicos
+Zustand para State Management
+O projeto utiliza Zustand para gerenciar o estado do carrinho de compras, proporcionando:
 
-To learn more about Next.js, take a look at the following resources:
+Zero Prop Drilling: Estado acessível em qualquer componente
+Performance: Re-renders otimizados
+Simplicidade: API minimalista e intuitiva
+Persistência: Carrinho mantido entre reloads
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+typescript// Exemplo de uso
+const { items, addItem, removeItem } = useCartStore();
+Server vs Client Components
+Estratégia clara de separação entre Server e Client Components para maximizar performance:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Server Components: Listagem de produtos, páginas estáticas, dados do usuário
+Client Components: Carrinho, interações, formulários, autenticação
 
-## Deploy on Vercel
+Categorias Filtradas
+Sistema de categorias customizadas integrado com Stripe:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Criação de metadados de categoria no Stripe
+Filtros dinâmicos em múltiplas páginas
+URL amigável para SEO
+Navegação intuitiva entre categorias
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Integração com Stripe
+Implementação completa do fluxo de pagamento:
+
+Criação de sessão de checkout
+Redirecionamento seguro para Stripe
+Webhook para confirmação de pagamento
+Atualização de status do pedido
+
+Autenticação com Supabase
+Sistema robusto de autenticação e gerenciamento de usuários:
+
+Registro e login seguro
+Armazenamento de dados de usuário
+Histórico de pedidos associado ao usuário
+Gerenciamento de sessão
+Recuperação de senha por email
+
+Design Mobile-First
+
+Componentes otimizados para tela pequena
+Navegação responsiva
+Touch-friendly interactions
+Performance otimizada para mobile
+
+🚀 Deploy
+O projeto está configurado para deploy automático na Vercel:
+
+Conecte seu repositório na Vercel
+Configure as variáveis de ambiente (Stripe e Supabase)
+Deploy automático a cada push
+Acesse em: https://fit-style-full-stack-e-commerce-web.vercel.app/
+
+📚 Aprendizados
+Este projeto foi uma oportunidade valiosa para:
+
+Implementar sistema de autenticação com Supabase
+Gerenciar dados de usuário e histórico de compras
+Criar sistema de categorias dinâmicas
+Aprofundar conhecimentos em Next.js 15 e App Router
+Dominar a diferenciação entre Server e Client Components
+Explorar alternativas de state management (Zustand vs Redux vs Context API)
+Implementar fluxo completo de pagamento com Stripe
+Desenvolver com abordagem mobile-first
+Aplicar boas práticas de UX em e-commerce
+
+🔐 Segurança
+
+Chaves sensíveis armazenadas em variáveis de ambiente
+Autenticação de usuário com Supabase
+Webhooks do Stripe verificados
+Validação de dados no servidor
+Proteção contra CSRF e XSS
+
+📝 Próximas Melhorias
+
+ Sistema de avaliações e comentários de produtos
+ Wishlist/Favoritos
+ Cupons e códigos promocionais
+ Notificações por email de pedidos
+ Dashboard administrativo
+ Sistema de recomendações
+ Analytics e relatórios
+
+📄 Licença
+Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e distribuir.
+
+Desenvolvido com ❤️ usando Next.js, Stripe e Supabase
