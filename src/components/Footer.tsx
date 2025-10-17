@@ -59,10 +59,6 @@ export default function Footer() {
                   Shoes
                 </Link>
               </li>
-              <li>
-                <Link href="#" className="text-cyan-100 hover:text-cyan-400 transition-colors text-sm">
-                  Acessórios
-                </Link>
               </li>
             </ul>
           </div>
@@ -76,7 +72,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <input
                 type="email"
-                placeholder="Seu e-mail"
+                placeholder="Your e-mail"
                 className="px-4 py-2 rounded-lg bg-cyan-800 text-white placeholder-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 text-sm"
               />
               <button className="px-4 py-2 bg-cyan-700 hover:bg-cyan-600 rounded-lg font-semibold transition-colors text-sm">
