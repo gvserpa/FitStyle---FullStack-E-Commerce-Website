@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useState } from "react";
-import { Search, ShoppingBag, ChevronDown, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";

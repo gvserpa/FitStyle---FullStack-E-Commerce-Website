@@ -8,7 +8,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Footprints, Home, Menu, Shirt, ShoppingBag } from "lucide-react";
-import Shoes from "./Shoes";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import Link from "next/link";
