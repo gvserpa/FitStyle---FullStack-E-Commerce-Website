@@ -59,7 +59,6 @@ export default function Footer() {
                   Shoes
                 </Link>
               </li>
-              </li>
             </ul>
           </div>
 
