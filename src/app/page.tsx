@@ -1,103 +1,189 @@
 import Image from "next/image";
+import exerciseCouple from "../../public/couple.png";
+import MainCard from "@/components/MainCard";
+import ProductCard from "@/components/ProductCard";
+import { stripe } from "@/lib/stripe";
+import Leggings from "@/components/Leggings";
+import Shirts from "@/components/Shirts";
+import Shoes from "@/components/Shoes";
+import Collections from "@/components/Collections";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-export default function Home() {
+export default async function Home() {
+  const allProducts = await stripe.products.list({
+    expand: ["data.default_price"],
+    limit: 100,
+  });
+
+  const leggings = allProducts.data.filter(
+    (product) => product.metadata.category === "leggings"
+  );
+  const shirts = allProducts.data.filter(
+    (product) => product.metadata.category === "shirts"
+  );
+  const shoes = allProducts.data.filter(
+    (product) => product.metadata.category === "shoes"
+  );
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main>
+      {/* Hero Section */}
+      <div className="flex flex-col md:flex-row mt-10 bg-gray-200 gap-8 md:gap-20 px-4 md:px-10 h-200">
+        {/* Left Column */}
+        <div className="flex flex-col justify-between lg:h-200 w-full md:w-1/3 lg:w-1/2">
+          <div className="flex flex-col gap-6 md:gap-10">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold">
+              Transform Your<span className="text-cyan-700"> Fitness </span>
+              Journey Today
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg">
+              Reach your goals in style and comfort. Discover fitness apparel
+              that moves with you, combining performance, durability, and modern
+              design for every workout. Feel confident as you push yourself
+              daily and get inspired to exceed your limits with our premium
+              activewear collection.
+            </p>
+          </div>
+          <button className="bg-cyan-700 lg:mb-30 text-white px-6 py-3 sm:px-8 sm:py-4 mt-6 md:mt-0 rounded-2xl w-full sm:w-1/2 hover:bg-cyan-600 transition-transform duration-300 ease-in-out hover:-translate-y-1">
+            Shop Now
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+
+        {/* Right Column */}
+        <div className="relative w-full md:w-2/3 mt-6 md:mt-0">
+          <svg
+            className="absolute w-full h-full"
+            viewBox="0 0 600 800"
+            preserveAspectRatio="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#ecfeff" />
+                <stop offset="50%" stopColor="#06b6d4" />
+                <stop offset="100%" stopColor="#0e7490" />
+              </linearGradient>
+              <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#cffafe" />
+                <stop offset="50%" stopColor="#0891b2" />
+                <stop offset="100%" stopColor="#0e7490" />
+              </linearGradient>
+              <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#a5f3fc" />
+                <stop offset="50%" stopColor="#22d3ee" />
+                <stop offset="100%" stopColor="#0e7490" />
+              </linearGradient>
+            </defs>
+
+            <path
+              d="M0,700 C100,500 200,300 300,200 C400,100 500,50 600,20"
+              stroke="url(#waveGradient1)"
+              strokeWidth="20"
+              fill="none"
+              opacity="0.6"
+            />
+            <path
+              d="M0,720 C110,510 210,310 310,205 C410,105 510,60 600,30"
+              stroke="url(#waveGradient2)"
+              strokeWidth="40"
+              fill="none"
+              opacity="0.4"
+            />
+            <path
+              d="M0,680 C90,490 190,290 290,195 C390,95 490,40 600,10"
+              stroke="url(#waveGradient3)"
+              strokeWidth="20"
+              fill="none"
+              opacity="0.3"
+            />
+          </svg>
+
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={exerciseCouple}
+            alt=""
+            className="relative lg:h-full z-10 h-auto object-fit rounded"
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        </div>
+      </div>
+
+      {/* MainCard Section */}
+      <div className="bg-white pt-20 pb-20 w-full">
+        <MainCard />
+      </div>
+
+      {/* Collections Section */}
+      <div className="bg-white py-20">
+        <Collections />
+      </div>
+
+      {/* Leggings Carousel */}
+      <div className="bg-white pt-20">
+        <Leggings />
+        <div className="container mx-auto px-4">
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {leggings.map((product) => (
+                <CarouselItem
+                  key={product.id}
+                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                >
+                  <ProductCard product={product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+
+      {/* Shirts Carousel */}
+      <div className="bg-white pt-20">
+        <Shirts />
+        <div className="container mx-auto px-4">
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {shirts.map((product) => (
+                <CarouselItem
+                  key={product.id}
+                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                >
+                  <ProductCard product={product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+
+      {/* Shoes Carousel */}
+      <div className="bg-white pt-20 pb-20">
+        <Shoes />
+        <div className="container mx-auto px-4">
+          <Carousel opts={{ align: "start", loop: true }} className="w-full">
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {shoes.map((product) => (
+                <CarouselItem
+                  key={product.id}
+                  className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+                >
+                  <ProductCard product={product} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+    </main>
   );
 }
