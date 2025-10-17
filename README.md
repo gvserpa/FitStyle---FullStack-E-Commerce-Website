@@ -231,10 +231,6 @@ Este projeto foi uma oportunidade valiosa para:
 - [ ] Sistema de recomendações
 - [ ] Analytics e relatórios
 
-## 🙏 Créditos
-
-Projeto desenvolvido com base no tutorial do **PedroTech**, com evoluções significativas em funcionalidade, design e experiência do usuário.
-
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e distribuir.
