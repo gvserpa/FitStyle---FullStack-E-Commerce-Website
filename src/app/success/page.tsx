@@ -81,7 +81,7 @@ const SuccessPage = () => {
                     Preparing Your Order
                   </p>
                   <p className="text-sm text-gray-600">
-                    We're getting your items ready to ship
+                    We&apos;re getting your items ready to ship
                   </p>
                 </div>
               </div>
@@ -105,7 +105,7 @@ const SuccessPage = () => {
                 <div className="flex-1 text-left">
                   <p className="font-semibold text-gray-900">Delivered</p>
                   <p className="text-sm text-gray-600">
-                    You'll receive a tracking number via email
+                    You&apos;ll receive a tracking number via email
                   </p>
                 </div>
               </div>

@@ -155,7 +155,7 @@ export default function GetHelpPage() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Need Help?</h1>
           <p className="text-gray-600 text-lg">
-            We're here to help. Fill out the form below and our support team will contact you as soon as possible.
+            We&apos;re here to help. Fill out the form below and our support team will contact you as soon as possible.
           </p>
         </div>
 

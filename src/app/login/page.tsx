@@ -29,12 +29,11 @@ const Page = () => {
 
   const supabase = createClient();
 
-      useEffect(() => {
-        if (user && !authLoading) {
-            router.push("/")
-        }
-    }, [user, authLoading, router])
-
+  useEffect(() => {
+    if (user && !authLoading) {
+      router.push("/");
+    }
+  }, [user, authLoading, router]);
 
   async function handleAuth(e: React.FormEvent) {
     e.preventDefault();
@@ -60,15 +59,22 @@ const Page = () => {
         });
         if (error) throw error;
       }
-    } catch (error: any) {
-      setError(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("An unexpected error occured.")
+      }
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <form onSubmit={handleAuth} className="flex items-center justify-center my-50">
+    <form
+      onSubmit={handleAuth}
+      className="flex items-center justify-center my-50"
+    >
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>
@@ -128,7 +134,11 @@ const Page = () => {
             variant="outline"
             className="w-full bg-black hover:bg-black/80 hover:text-white text-white"
           >
-            {loading ? "Loading..." : isSignUp ? "Sign Up with Google" : "Login with Google"}
+            {loading
+              ? "Loading..."
+              : isSignUp
+                ? "Sign Up with Google"
+                : "Login with Google"}
           </Button>
           <CardAction>
             <button
