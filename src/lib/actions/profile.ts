@@ -5,24 +5,30 @@ import { createClient } from "../server";
 export async function getCurrentUserProfile() {
   const supabase = await createClient();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // Pega o usuário atual
+  const { data: { user }, error: userError } = await supabase.auth.getUser();
 
-  if (!user) {
+  if (userError) {
+    console.error("Error getting user:", userError);
     return null;
   }
 
-  const {data: profile, error} = await supabase
+  if (!user) {
+    // Nenhum usuário logado
+    return null;
+  }
+
+  // Busca o perfil do usuário
+  const { data: profile, error: profileError } = await supabase
     .from("users")
     .select("*")
     .eq("id", user.id)
     .single();
 
-    if(error) {
-        console.error("Error fetching profile:", error);
-        return null
-    }
+  if (profileError) {
+    console.error("Error fetching profile:", profileError);
+    return null;
+  }
 
-    return profile
+  return profile;
 }

@@ -44,7 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     checkUser();
-  }, []);
+  }, [supabase.auth]);
 
   async function signOut() {
     try {

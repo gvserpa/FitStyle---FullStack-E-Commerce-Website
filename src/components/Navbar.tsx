@@ -41,7 +41,7 @@ const Navbar = () => {
         const { data, error } = await supabase
           .from("profiles")
           .select("avatar_url")
-          .eq("id", user.id)
+          .eq("id", user!.id)
           .limit(1)
           .single();
 

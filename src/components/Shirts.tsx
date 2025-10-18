@@ -1,4 +1,3 @@
-import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
 import { memo } from "react";
 
 const Shirts = () => {
