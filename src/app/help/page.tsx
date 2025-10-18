@@ -292,7 +292,7 @@ export default function GetHelpPage() {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Seu nome"
+                  placeholder="Your name"
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${
@@ -314,7 +314,7 @@ export default function GetHelpPage() {
                   <input
                     type="email"
                     name="email"
-                    placeholder="seu@email.com"
+                    placeholder="johndoe@email.com"
                     value={formData.email}
                     onChange={handleChange}
                     className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${
@@ -356,7 +356,7 @@ export default function GetHelpPage() {
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Resumo do seu problema"
+                  placeholder="Subject"
                   value={formData.subject}
                   onChange={handleChange}
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${
@@ -376,7 +376,7 @@ export default function GetHelpPage() {
                 </label>
                 <textarea
                   name="description"
-                  placeholder="Descreva seu problema em detalhes..."
+                  placeholder="Describe what is happening in details..."
                   value={formData.description}
                   onChange={handleChange}
                   rows={5}
@@ -403,8 +403,8 @@ export default function GetHelpPage() {
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <Paperclip size={24} className="mx-auto text-blue-600 mb-2" />
-                  <p className="text-sm text-gray-700 font-medium">Clique ou arraste arquivos aqui</p>
-                  <p className="text-xs text-gray-600 mt-1">Máximo 5MB por arquivo (imagens, PDF)</p>
+                  <p className="text-sm text-gray-700 font-medium">Drag and drop files here</p>
+                  <p className="text-xs text-gray-600 mt-1">Max 5MB per file (images, PDF)</p>
                 </div>
 
                 {formData.attachments.length > 0 && (
