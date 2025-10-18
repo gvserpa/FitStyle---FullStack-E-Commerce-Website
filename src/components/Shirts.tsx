@@ -8,12 +8,13 @@ const Shirts = () => {
           <h2 className="font-bold text-3xl mb-10">Shirts</h2>
           <p className="text-center">
             Performance shirts designed for comfort, breathability, and style
-            during every workout.
+            during every workout and other activies.
           </p>
         </div>
       </div>
     </div>
   );
 };
+//
 
 export default memo(Shirts);
